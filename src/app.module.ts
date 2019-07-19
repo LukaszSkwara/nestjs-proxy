@@ -1,10 +1,19 @@
-import { Module } from '@nestjs/common';
+import { StatusModule } from './status/status.module';
+import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { LoggerMiddleware } from './common/middlewares/logger.middleware';
+import { HttpProxyModule } from './httpProxy/httpProxy.module';
 
 @Module({
-  imports: [],
+  imports: [StatusModule, HttpProxyModule],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(LoggerMiddleware)
+      .forRoutes('/');
+  }
+}
