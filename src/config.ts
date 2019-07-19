@@ -17,4 +17,5 @@ export const jwtSignOptions = {
 
 export const jwtSecret: string = serviceAccountPrivateKey;
 
-export const apiUrl: string = process.env.API_URL || 'https://api.cloudbackup.acaisoft.io/hasura/v1/graphql';
+export const apiUrl: string = process.env.API_URL || 'http://localhost:3000/graphql';
+export const wsUrl: string = process.env.WS_URL || 'ws://localhost:3000/graphql';
