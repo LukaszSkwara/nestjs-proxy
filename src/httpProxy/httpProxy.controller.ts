@@ -4,7 +4,7 @@ import { apiUrl, serviceAccountPublicKey } from '../config';
 import { get, mapKeys } from 'lodash';
 import * as jwt from 'jsonwebtoken';
 
-@Controller('proxy')
+@Controller('v1')
 export class HttpProxyController {
   @Post('graphql')
   async graphql(@Request() request): Promise<any> {
@@ -15,6 +15,10 @@ export class HttpProxyController {
     // } catch {
     //   throw new UnauthorizedException();
     // }
-    return (await axios.post(apiUrl, JSON.stringify(request.body), { headers: { ...request.headers, 'Content-Type': 'application/json' } })).data;
+    // console.log(request.body);
+    return (await axios.post(apiUrl, JSON.stringify(request.body),
+      {
+        headers: { 'Content-Type': 'application/json' },
+      })).data;
   }
 }
