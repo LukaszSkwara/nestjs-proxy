@@ -39,3 +39,9 @@ async function bootstrap() {
   server.on('upgrade', wsProxy.upgrade);
 }
 bootstrap();
+process.on('SIGINT', () => {
+  // tslint:disable-next-line:no-console
+  console.log('\nGracefully shutting down from SIGINT (Ctrl-C)');
+  // some other closing procedures go here
+  process.exit(1);
+});
