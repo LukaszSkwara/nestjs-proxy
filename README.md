@@ -35,6 +35,13 @@ $ yarn test:e2e
 $ yarn test:cov
 ```
 
+## Build docker
+
+```bash
+$ yarn prestart:prod
+$ docker build -t graphql-proxy .
+```
+
 ## License
 
   Nest is [MIT licensed](LICENSE).
