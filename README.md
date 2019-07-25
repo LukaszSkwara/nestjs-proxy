@@ -38,6 +38,7 @@ $ yarn test:cov
 ## Build docker
 
 ```bash
+$ yarn install
 $ yarn prestart:prod
 $ docker build -t graphql-proxy .
 ```
